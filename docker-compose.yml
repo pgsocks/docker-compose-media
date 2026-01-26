@@ -81,6 +81,18 @@ services:
     networks:
         - media-net
 
+  pinchflat:
+    image: ghcr.io/kieraneglin/pinchflat:latest
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    ports:
+      - "8945:8945"
+    volumes:
+      - ./config/pinchflat:/config
+      - storage:/downloads
+
 networks:
   media-net:
     driver: bridge
